@@ -1,4 +1,0 @@
-/Users/martinmilicaj/ImageProcessingProject/build/CMakeFiles/base.dir
-/Users/martinmilicaj/ImageProcessingProject/build/CMakeFiles/openmp.dir
-/Users/martinmilicaj/ImageProcessingProject/build/CMakeFiles/edit_cache.dir
-/Users/martinmilicaj/ImageProcessingProject/build/CMakeFiles/rebuild_cache.dir
