@@ -4,9 +4,10 @@
       "name": "Mac",
       "includePath": [
         "${workspaceFolder}/**",
+        "/opt/homebrew/include",
         "/opt/homebrew/opt/opencv/include",
         "/opt/homebrew/opt/opencv/include/opencv4",
-        "/opt/homebrew/opt/libomp/include"
+        "/opt/homebrew/Cellar/open-mpi/5.0.7/include"
       ],
       "defines": [],
       "macFrameworkPath": ["/System/Library/Frameworks", "/Library/Frameworks"],
