@@ -1,4 +1,4 @@
-# Ignore build outputs and generated images
+# ignore build outputs and generated im.
 build/
 results/
 
@@ -6,6 +6,6 @@ results/
 .vscode/
 *.DS_Store
 
-# Media files
+# media files
 *.jpg
 *.png
