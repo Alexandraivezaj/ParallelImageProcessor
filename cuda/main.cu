@@ -2,9 +2,9 @@
 #include <iostream>
 #include <cuda_runtime.h>
 
-// Dummy kernel
+// the dmmy kernel
 __global__ void dummyKernel(unsigned char* data) {
-    // No-op
+
 }
 
 int main() {
@@ -31,7 +31,7 @@ int main() {
     cv::Mat edges;
     cv::Canny(blurred, edges, 100, 200);
     cv::imwrite("../results/cuda_edges.jpg", edges);
-    std::cout << "✅ CUDA (stub) output saved to results/cuda_edges.jpg" 
+    std::cout << "CUDA output saved to results/cuda_edges.jpg" 
 << std::endl;
 
     return 0;
