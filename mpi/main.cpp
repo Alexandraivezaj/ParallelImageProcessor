@@ -1,7 +1,7 @@
 #include <mpi.h>
 #include <opencv2/opencv.hpp>
 #include <iostream>
-#include <chrono>  // ⏱️ For performance timing
+#include <chrono>  
 
 using namespace std;
 
@@ -36,13 +36,13 @@ int main(int argc, char** argv) {
         sliceRows = rows / size;
     }
 
-    // Broadcast metadata to all processes
+    // broadcast metadata to all processes
     MPI_Bcast(&rows, 1, MPI_INT, 0, MPI_COMM_WORLD);
     MPI_Bcast(&cols, 1, MPI_INT, 0, MPI_COMM_WORLD);
     MPI_Bcast(&type, 1, MPI_INT, 0, MPI_COMM_WORLD);
     sliceRows = rows / size;
 
-    // ⏱️ Start timing (after sync)
+    //  want to start timing after sync
     MPI_Barrier(MPI_COMM_WORLD);
     auto start = std::chrono::high_resolution_clock::now();
 
@@ -60,15 +60,13 @@ int main(int argc, char** argv) {
                     localData.data(), sliceSize, MPI_UNSIGNED_CHAR,
                     0, MPI_COMM_WORLD);
     }
-
-    // Process local slice
+// want to process loacal slice
     cv::Mat localSlice(sliceRows, cols, CV_8UC3, localData.data());
 
     cv::Mat blurred, edges;
     cv::GaussianBlur(localSlice, blurred, cv::Size(5, 5), 1.5);
     cv::Canny(blurred, edges, 100, 200);
 
-    // Gather results back to root
     std::vector<uchar> processedSlice;
     if (edges.isContinuous()) {
         processedSlice.assign(edges.data, edges.data + edges.total());
@@ -86,7 +84,7 @@ int main(int argc, char** argv) {
                fullImage.data(), sliceRows * cols, MPI_UNSIGNED_CHAR,
                0, MPI_COMM_WORLD);
 
-    // ⏱️ End timing (after sync)
+    // end timing 
     MPI_Barrier(MPI_COMM_WORLD);
     auto end = std::chrono::high_resolution_clock::now();
 
